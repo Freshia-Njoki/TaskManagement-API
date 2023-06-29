@@ -40,6 +40,6 @@ app.get('/', (req, res) => {
 })
 
 //server should  listen to our configs >> obj
-app.listen(config.port, () => {
-    console.log(`server is running at ${config.url}`);
+app.listen(config.port || 5000, () => {
+    console.log("server is running on");
 })

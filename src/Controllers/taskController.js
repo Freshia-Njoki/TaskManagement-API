@@ -41,8 +41,10 @@ export const createTask = async (req, res) => {
     let pool = await sql.connect(config.sql);
     let insertTask = await pool
       .request()
-      .input("description", sql.VarChar, description) // Insert the description into the SQL query
-      .query("insert into Tasks (description) values (@description)"); // Execute the SQL query
+      .input("description", sql.VarChar, description) 
+      // Insert the description into the SQL query
+      .input("status", sql.VarChar, "status")
+      .query("insert into Tasks (description, status) values (@description, @status)"); // Execute the SQL query
     res.status(201).json({ message: "Task created successfully" });
   } catch (error) {
     res
@@ -73,17 +75,23 @@ export const updateTask = async (req, res) => {
   }
 };
 // // Delete a task
+// Delete a task
 export const deleteTask = async (req, res) => {
   try {
     const { id } = req.params;
-    await sql.connect(config.sql);
-    await sql.query`DELETE FROM Tasks WHERE task_id = ${id}`;
+    console.log(id);
+    
+    let pool = await sql.connect(config.sql);
+    await pool.request()
+      .input('id', id) // Assuming the parameter name in the query is @id
+      .query('DELETE FROM Tasks WHERE task_id = @id');
+   
     res.status(200).json({ message: "Task deleted successfully" });
   } catch (error) {
-    res
-      .status(500)
-      .json({ error: "An error occurred while deleting the task" });
+    console.log(error);
+    res.status(500).json({ error: "Failed to delete the task" });
   } finally {
     sql.close();
   }
 };
+

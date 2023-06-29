@@ -53,6 +53,7 @@ export const login = async (req, res) => {
     let pool = await sql.connect(config.sql);
     const result = await pool.request()
         .input('username', sql.VarChar, username)
+        .input('password', sql.VarChar, password)
         .query('SELECT * FROM Users WHERE username = @username');
     const user = result.recordset[0];
     if (!user) {
