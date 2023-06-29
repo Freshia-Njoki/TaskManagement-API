@@ -7,12 +7,6 @@
   "engines": {
     "node": ">=18.16.0"
   },
-  "scripts": {
-    "start": "node --watch server.js",
-    "dev": "nodemon server.js"
-  },
-  "author": "Freshia Njoki",
-  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
@@ -21,5 +15,10 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "mssql": "^9.1.1"
-  }
+  },
+  "scripts": {
+    "start": "node --watch server.js"
+  },
+  "author": "Freshia Njoki",
+  "license": "ISC"
 }
