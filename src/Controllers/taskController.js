@@ -3,15 +3,20 @@ import config from "../db/config.js";
 
 // // Get all tasks
 export const getTasks = async (req, res) => {
+  console.log("hello")
   try {
     let pool = await sql.connect(config.sql);
     const result = await pool.request().query("select * from Tasks");
+
+    console.log(result)
+    console.log("hello world")
+
     res.status(200).json(result.recordset);
     // console.dir(result);
   } catch (error) {
     res
       .status(201)
-      .json({ error: "an error occurred while creating the task" });
+      .json({ error: "an error occurred while getting the task" });
   } finally {
     sql.close(); // Close the SQL connection
   }

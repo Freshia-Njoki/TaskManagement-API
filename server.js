@@ -3,7 +3,7 @@ import config from './src/db/config.js';
 import routes from './src/routes/routes.js';
 import cors from 'cors'
 // import todoRoutes from './routes/todoRouters.js'
-// import bodyParser from 'body-parser';
+
 import jwt from 'jsonwebtoken';//auth of all languages- has methods and encryption algorithim
 //have headers (contain alg and token type)-used to send authentication to and frothat contains the metadata info about the JSON web token-
 
@@ -27,8 +27,7 @@ app.use((req, res, next) => {
         next();
     }
 });
-
-// app.use(bodyParser);//sending data via req_body -- either JSON, Form-encode in localhost
+//sending data via req_body -- either JSON, Form-encode in localhost
 
 
 //todo expects express as app
@@ -41,5 +40,5 @@ app.get('/', (req, res) => {
 
 //server should  listen to our configs >> obj
 app.listen(config.port || 5000, () => {
-    console.log("server is running on");
+    console.log(`server is running on ${config.port}`);
 })
