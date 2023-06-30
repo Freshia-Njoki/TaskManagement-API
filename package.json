@@ -18,6 +18,8 @@
   },
   "scripts": {
     "start": "node --watch server.js"
+    
+  
   },
   "author": "Freshia Njoki",
   "license": "ISC"
