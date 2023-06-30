@@ -33,7 +33,7 @@ export const register = async (req, res) => {
                 .input('password', sql.VarChar, hashedPassword)//TABLE VALUES
                 .input('date_of_birth', sql.VarChar, date_of_birth)
                 .query('INSERT INTO Users (user_id, username,  email, role, password, date_of_birth) VALUES (@user_id, @username,  @email, @role, @password, @date_of_birth)');
-            res.status(200).send({ message: 'User created successfully' });
+            res.status(200).send({ message: 'Welcome to WorkflowPro🎉' });
             // res.send("created")
            
         }

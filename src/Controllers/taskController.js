@@ -48,7 +48,7 @@ export const createTask = async (req, res) => {
       .request()
       .input("description", sql.VarChar, description) 
       // Insert the description into the SQL query
-      .input("status", sql.VarChar, "status")
+      .input("status", sql.VarChar, "ToDo")
       .query("insert into Tasks (description, status) values (@description, @status)"); // Execute the SQL query
     res.status(201).json({ message: "Task created successfully" });
   } catch (error) {
