@@ -50,7 +50,7 @@ export const createTodo = async (req, res) => {
             .input('password', sql.VarChar, password)
             .input('date_of_birth', sql.Date, date_of_birth)
             .query("INSERT INTO Users (user_id, username, email, role, password, date_of_birth) VALUES (@user_id, @username, @email, @role, @password, @date_of_birth)");//insert the value grabbed here(match using @)
-        res.status(200).json({ message: 'user added successfully'});
+        res.status(200).json({ message: 'Welcome to WorkflowPro🎉'});
     } catch (error) {
         res.status(500).json({ error});
         console.log(error)
