@@ -50,7 +50,8 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
     const { username, password } = req.body;
-    let pool = await sql.connect(config.sql);
+    try {
+        let pool = await sql.connect(config.sql);
     const result = await pool.request()
         .input('username', sql.VarChar, username)
         .input('password', sql.VarChar, password)
@@ -67,5 +68,13 @@ export const login = async (req, res) => {
             res.status(200).json({ email: user.email, username: user.username, id: user.user_id, token: token });
         }
     }
+        
+    } catch (error) {
+        console.log( error )
+        
+    } finally {
+
+    }
+    
 
 };
